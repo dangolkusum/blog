@@ -1,15 +1,16 @@
-<html>
-    <title>MY blog</title>
-    <link rel="stylesheet" href="../resources/app.css">
-    <body>
+@extends('layout')
+@section('content')
         @foreach($posts as $post)
-        <a href="/post/{{$post->id}}"><h1>{{$post->title}}</h1></a>
+        
+        
+        <a href="/post/{{$post->slug}}"><h1>{{$post->title}}</h1></a>
+        <p>
+            <a href="/categories/{{$post->category->slug}}">{{ $post->category->name }}</a>
+        </p>
+        
         <p>
             {{$post->excerpt}}
         </p>
         @endforeach
         
-
-        
-    </body>
-</html>
+@endsection

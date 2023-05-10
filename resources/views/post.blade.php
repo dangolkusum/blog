@@ -1,14 +1,16 @@
 
-<html>
-    <title>MY blog</title>
-    <link rel="stylesheet" href="/app.css">
-    <body>
-        
-       <h1> <a href="/posts/{{$post->id}}">{{$post->title}}</a></h1>
+@extends('layout')
+@section('content')
+       <h1> {{$post->title}}</h1>
+       <p>
+            <a href="/categories/{{$post->category->slug}}">{{ $post->category->name }}</a>
+        </p>
         <p>
-            {{$post->excerpt}}
+            {{$post->body}}
         </p>
 
-        
-    </body>
-</html>
+        <p>
+            <a href="{{url()->previous()}}">go back</a>
+        </p>
+       
+@endsection
